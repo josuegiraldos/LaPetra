@@ -1,9 +1,9 @@
-const Role = require('../models/Rol.js');
+const Roles = require('../models/Rol.js');
 const Usuario = require('../models/Usuario.js');
 const Categoria = require('../models/Categoria.js');
 
 const isValidRole = async (rol = '') => {
-    const existeRol = await Role.findOne({rol});
+    const existeRol = await Roles.findOne({rol});
     if(!existeRol){
         throw new Error(`El rol ${rol} no está registrado en la base de datos.`);
     }

@@ -1,5 +1,5 @@
 const Usuario = require('../models/Usuario.js');
-const bycryptjs = require('bcryptjs');
+const bcryptjs = require('bcryptjs');
 
 const getUsers = async (req, res) => {
     try {
@@ -26,7 +26,7 @@ const postUser = async (req, res) => {
         const { nombre, email, password, imagen, rol } = req.body;
         const usuario = new Usuario({ nombre, email, password, imagen, rol });
 
-        const salt = bycryptjs.genSaltSync();
+        const salt = bcryptjs.genSaltSync();
         usuario.password = bcryptjs.hashSync(password, salt);
 
         await usuario.save();
@@ -55,8 +55,8 @@ const putUser = async (req, res) => {
         const { _id, password, googleSignIn, ...resto } = req.body;
 
         if(password){
-            const salt = bycryptjs.genSaltSync();
-            resto.password = bycryptjs.hashSync(password, salt);
+            const salt = bcryptjs.genSaltSync();
+            resto.password = bcryptjs.hashSync(password, salt);
         }
 
         const usuario = await Usuario.findByIdAndUpdate(id, resto, { new: true });
