@@ -6,11 +6,11 @@ class Server {
     constructor(){
         this.app = express();
         this.port = process.env.PORT;
-        /* this.paths = {
+        this.paths = {
             authPath:           '/api/auth',
             categoriasPath:     '/api/categorias',
             usuariosPath:       '/api/usuarios'
-        } */
+        }
 
         // Conectar a la base de datos MONGODB
         this.connectDB();
@@ -19,7 +19,7 @@ class Server {
         this.middlewares();
 
         //Routing
-        /* this.routes(); */
+        this.routes();
     }
 
     async connectDB(){
@@ -37,11 +37,11 @@ class Server {
         this.app.use(express.static('public'));
     }
 
-    /* routes(){
+    routes(){
         this.app.use(this.paths.authPath, require('../routes/auth.routes.js'));
         this.app.use(this.paths.usuariosPath, require('../routes/usuario.routes.js'));
         this.app.use(this.paths.categoriasPath, require('../routes/categoria.routes.js'));
-    } */
+    }
 
     listen(){
         this.app.listen(this.port, () => {
