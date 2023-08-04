@@ -25,6 +25,8 @@ router.delete("/:id", [
     validateDocuments
 ], deleteCategoria);
 router.put("/:id", [
+    validateJWT,
+    isAdminRole,
     check('id', "No es un ObjectId MongoDB válido.").isMongoId(),
     check('id').custom(categoriaExiste),
     validateDocuments
