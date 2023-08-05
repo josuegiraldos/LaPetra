@@ -1,7 +1,5 @@
 const Producto = require("../models/Producto.js");
 
-
-
 const getProductos = async (req, res) => {
     try {
         const { hasta, desde } = req.query;
@@ -40,7 +38,6 @@ const getProductoById = async (req, res) => {
             msg: "Error al obtener producto por ID. PRODUCTO.CONTROLLER"
         })
     }
-
 }
 
 const postProducto = async (req, res) => {

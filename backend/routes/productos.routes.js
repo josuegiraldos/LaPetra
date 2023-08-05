@@ -3,7 +3,7 @@ const { check } = require('express-validator');
 const { validateDocuments } = require('../middlewares/validate.documents.js');
 const { validateJWT } = require('../middlewares/validate.jwt.js');
 const { isAdminRole } = require('../middlewares/validate.role.js');
-const { isValidRole, productoExistsById } = require('../helpers/db.validators.js');
+const { productoExistsById } = require('../helpers/db.validators.js');
 const { getProductos, getProductoById, postProducto, deleteProducto, putProducto } = require('../controllers/productos.controllers.js')
 
 const router = Router();

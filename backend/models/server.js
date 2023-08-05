@@ -10,7 +10,8 @@ class Server {
             authPath:           '/api/auth',
             categoriasPath:     '/api/categorias',
             usuariosPath:       '/api/usuarios',
-            productosPath:      '/api/productos'
+            productosPath:      '/api/productos',
+            rolPath:            '/api/rol'
         }
 
         // Conectar a la base de datos MONGODB
@@ -42,7 +43,8 @@ class Server {
         this.app.use(this.paths.authPath, require('../routes/auth.routes.js'));
         this.app.use(this.paths.usuariosPath, require('../routes/usuario.routes.js'));
         this.app.use(this.paths.categoriasPath, require('../routes/categoria.routes.js'));
-        this.app.use(this.paths.productosPath, require('../routes/productos.routes.js'))
+        this.app.use(this.paths.productosPath, require('../routes/productos.routes.js'));
+        this.app.use(this.paths.rolPath, require('../routes/rol.routes.js'));
     }
 
     listen(){
