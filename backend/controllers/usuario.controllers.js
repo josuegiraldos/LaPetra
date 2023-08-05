@@ -8,8 +8,8 @@ const getUsers = async (req, res) => {
         const [ total, usuarios ] = await Promise.all([
             Usuario.countDocuments(query),
             Usuario.find(query)
-            .skip(Number(desde))
-            .limit(Number(hasta))
+                .skip(Number(desde))
+                .limit(Number(hasta))
         ]);
 
         res.json({
@@ -43,7 +43,10 @@ const deleteUser = async (req, res) => {
     try {
         const { id } = req.params;
         const usuario = await Usuario.findByIdAndUpdate(id, { estado: false });
-        res.json(usuario);
+        res.status(201).json({
+            msg: "Usuario eliminado correctamente.",
+            usuario
+        })
     } catch (error) {
         console.log(error);
     }

@@ -23,32 +23,40 @@ const getCategorias = async (req, res) => {
 
 const postCategoria = async (req, res) => {
     try {
-        const nombre = req.body.nombre;
-        const categoriaDB = await Categoria.findOne({nombre});
-        if(categoriaDB){
+        const { nombre, descripcion, imagen, estado } = req.body;
+        const categoriaDB = await Categoria.findOne({ nombre });
+
+        if (categoriaDB) {
             return res.status(400).json({
-                msg: `La categoría ${categoriaDB.nombre} ya existe en la base de datos.`
-            })
+                msg: `La categoría ${categoriaDB.nombre} ya existe en la base de datos. CATEGORIA.CONTROLLERS`
+            });
         }
+
         const data = {
             nombre,
             descripcion,
             imagen,
             estado
-        }
+            // Aquí también puedes agregar otros campos del esquema si los tienes
+        };
+
         const categoria = new Categoria(data);
         await categoria.save();
-        res.status(201).json(categoria)
+
+        res.status(201).json(categoria);
     } catch (error) {
         console.log(error);
     }
-}
+}   
 
 const deleteCategoria = async (req, res) => {
     try {
         const {id} = req.params;
         const categoria = await Categoria.findByIdAndUpdate(id, {estado: false});
-        res.json(categoria);
+        res.status(201).json({
+            msg: "Categoria eliminada correctamente",
+            categoria
+        })
     } catch (error) {
         console.log(error);
     }
@@ -71,7 +79,7 @@ const putCategoria = async (req, res) => {
 
         res.json({
             msg: "Categoría actualizada.",
-            categoria: categoria
+            categoria
         })
     } catch (error) {
         console.log(error);
