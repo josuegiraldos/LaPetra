@@ -36,7 +36,8 @@ const productoSchema = Schema({
     },
     estado: {
         type: Boolean,
-        default: true
+        default: true,
+        required: true
     }
 })
 

@@ -3,7 +3,7 @@ const bcryptjs = require('bcryptjs');
 
 const getUsers = async (req, res) => {
     try {
-        const { hasta, desde } = req.query;
+        // const { hasta, desde } = req.query;
         const query = { estado: true };
         const [ total, usuarios ] = await Promise.all([
             Usuario.countDocuments(query),
@@ -24,6 +24,7 @@ const getUsers = async (req, res) => {
 const postUser = async (req, res) => {
     try {
         const { nombre, email, password, imagen, rol } = req.body;
+
         const usuario = new Usuario({ nombre, email, password, imagen, rol });
 
         const salt = bcryptjs.genSaltSync();
@@ -66,7 +67,7 @@ const putUser = async (req, res) => {
 
         res.json({
             msg: "Usuario actualizado correctamente.",
-            usuario: usuario
+            usuario
         })
     } catch (error) {
         console.log(error);

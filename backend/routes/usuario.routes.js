@@ -11,9 +11,11 @@ const router = Router();
 router.get("/", getUsers);
 router.get("/:id", getUserById);
 router.post("/", [
-    check('nombre', "El nombre no es válido.").not().isEmpty(),
-    check('password', 'El password debe ser mínimo de 6 dígitos.').isLength({ min: 6 }),
-    check('email', "El email no es válido.").isEmail(),
+    validateJWT,
+    isAdminRole,
+    check('nombre', "El nombre no es válido. USUARIO.ROUTES").not().isEmpty(),
+    check('password', 'El password debe ser mínimo de 6 dígitos. USUARIO.ROUTES').isLength({ min: 6 }),
+    check('email', "El email no es válido. USUARIO.ROUTES").isEmail(),
     check('email').custom(emailExiste),
     check('rol').custom(isValidRole),
     validateDocuments
@@ -21,12 +23,14 @@ router.post("/", [
 router.delete("/:id", [
     validateJWT,
     isAdminRole,
-    check('id', 'No es un ID válido. USUARIO.CONTROLLERS').isMongoId(),
+    check('id', 'No es un ID válido. USUARIO.ROUTES').isMongoId(),
     check('id').custom(userExistsById),
     validateDocuments
 ], deleteUser);
 router.put("/:id", [
-    check('id', 'No es un ID válido.').isMongoId(),
+    validateJWT,
+    isAdminRole,
+    check('id', 'No es un ID válido. USUARIO.ROUTES.').isMongoId(),
     check('id').custom(userExistsById),
     check('rol').custom(isValidRole),
     validateDocuments
