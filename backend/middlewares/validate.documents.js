@@ -9,6 +9,9 @@ const validateDocuments = (req, res, next) => {
         next();
     } catch (error) {
         console.log(error.message);
+        res.json({
+            msg: "Error encontrado. VALIDATE.DOCUMENTS"
+        })
     }
 }
 
