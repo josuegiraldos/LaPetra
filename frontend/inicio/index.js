@@ -4,24 +4,32 @@ document.addEventListener("DOMContentLoaded", () => {
     showCategorias();
     showCarrusel();
     listarCategorias();
+    listarProductos();
 });
 const contenedor = document.querySelector('#listaCategorias');
 const listaCategorias = document.querySelector('#categoriasLista');
 
 async function showCategorias(){
+  try {
     const categoriasResponse = await getCategorias();
     console.log(categoriasResponse);
     const categorias = categoriasResponse.categorias;
     categorias.forEach(categoria => {
-        const { _id, nombre, descripcion, imagen } = categoria;
-        const item = document.createElement('a');
-        item.classList.add('nav-item', 'nav-link');
-        item.innerHTML = `${nombre}`;
+        const { _id, nombre, descripcion, imagen, cat } = categoria;
+        const item = document.createElement('div');
+        item.innerHTML = 
+        `
+        <a href="./categorias/${cat}/index.html" target="_blank">${nombre}</a>
+        `;
         contenedor.appendChild(item);
     });
+  } catch (error) {
+    console.log(error, "Error al cargar categorías.");
+  }
 }
 
 async function showCarrusel() {
+  try {
     const productosResponse = await getProductos();
     console.log(productosResponse);
     const productos = productosResponse.productos;
@@ -54,14 +62,18 @@ async function showCarrusel() {
       carruselContenedor.appendChild(slide);
     });
   
-    $(carruselContenedor).parent().carousel();
+    $(carruselContenedor).parent().carousel(); 
+  } catch (error) {
+    console.log(error, "Error al cargar carrusel.");
+  }
 }
  
 async function listarCategorias(){
+  try {
     const categoriasResponse = await getCategorias();
     const categorias = categoriasResponse.categorias;
     categorias.forEach(categoria => {
-        const { _id, nombre, descripcion, imagen } = categoria;
+        const { _id, nombre, descripcion, imagen, cat } = categoria;
 
         const card = document.createElement('div');
         card.innerHTML = 
@@ -71,10 +83,40 @@ async function listarCategorias(){
                 <div class="card-body card-body d-flex flex-column justify-content-between">
                     <h5 class="card-title">${nombre}</h5>
                     <p class="card-text">${descripcion}</p>
-                    <a href="#" class="btn btn-primary">Ver más</a>
+                    <a href="./categorias/${cat}/index.html" class="btn btn-primary" target="_blank">Ver más</a>
                 </div>
         </div>
         `;
         listaCategorias.appendChild(card);
     });
+  } catch (error) {
+    console.log(error, "Error al listar categorías.");
+  }
+}
+
+async function listarProductos(){
+  try {
+    const contenedor = document.querySelector('#contenedorProductos');
+    const productosResponse = await getProductos();
+    const productos = productosResponse.productos;
+    productos.forEach(producto => {
+      const { _id, nombre, descripcion, precio, imagen } = producto;
+      const card = document.createElement('div');
+      card.innerHTML = 
+      `
+        <div class="card custom-card" style="width: 18rem;">
+          <img src="./img/${imagen}" class="card-img-top" alt="...">
+            <div class="card-body card-body d-flex flex-column justify-content-between">
+            <h5 class="card-title">${nombre}</h5>
+            <p class="card-text">${descripcion}</p>
+            <p class="card-text">$${precio}</p>
+            <a href="#" class="btn btn-primary">Ver más</a>
+            </div>
+        </div>
+      `;
+      contenedor.appendChild(card);
+    });
+  } catch (error) {
+    console.log(error, "Error al listar productos.");
+  }
 }

@@ -1,4 +1,5 @@
 const Producto = require("../models/Producto.js");
+const Categoria = require("../models/Categoria.js");
 
 const getProductos = async (req, res) => {
     try {
@@ -96,10 +97,41 @@ const putProducto = async (req, res) => {
     }
 }
 
+const getProductosPorCategoria = async (req, res) => {
+    try {
+        console.log('Paso 1: Iniciando búsqueda de productos por categoría');
+        const { categoriaId } = req.params;
+        const query = { 
+            categoria: categoriaId,
+            estado: true
+        };
+        
+        console.log('Paso 2: Consulta de búsqueda:', query);
+        
+        const productos = await Producto.find(query)
+            .populate('categoria', 'nombre');
+        
+        console.log('Paso 3: Resultado de la búsqueda de productos:', productos);
+
+        res.json({
+            msg: "Productos filtrados por categoría.",
+            productos
+        });
+
+        console.log('Paso 4: Búsqueda de productos por categoría completada exitosamente');
+    } catch (error) {
+        console.log('Error:', error);
+        res.status(500).json({
+            msg: "Error al obtener productos por categoría. PRODUCTO.CONTROLLER"
+        });
+    }
+};
+
 module.exports = {
     getProductos,
     getProductoById,
     postProducto,
     deleteProducto,
-    putProducto
+    putProducto,
+    getProductosPorCategoria
 }

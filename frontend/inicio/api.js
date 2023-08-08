@@ -17,7 +17,8 @@ export const postCategoria = async (categoria) => {
             method: "POST",
             body: JSON.stringify(categoria),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-api-token-jwt': headers
             }
         })
         window.location.href = 'index.html';
@@ -62,6 +63,16 @@ export const getProductos = async () => {
         console.log(error, "Error al obtener los productos.");
     }
 }
+
+/* export const getProductosByCategoria = async (idCategoria) => {
+    try {
+        const data = await fetch(`${urlCategorias}/${idCategoria}`);
+        const productos = await data.json();
+        return productos;
+    } catch (error) {
+        console.log(error, "Error al obtener los productos.");
+    }
+} */
 
 export const postProducto = async (producto) => {
     try {

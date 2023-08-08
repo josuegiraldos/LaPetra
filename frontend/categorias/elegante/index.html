@@ -3,11 +3,11 @@
 
 <head>
     <meta charset="utf-8">
-    <title>La Petra CO</title>
+    <title>La Petra CO / Elegante - Clásico</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <!-- Favicon -->
-    <link href="img/logoDef.webp" rel="icon">
+    <link href="../../img/logoDef.webp" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -17,10 +17,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="../../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -50,7 +50,7 @@
         <div class="row align-items-center py-3 px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
                 <a href="./index.html" class="text-decoration-none">
-                    <img src="./img/logoDef.webp" width="325px">
+                    <img src="../../img/logoDef.webp" width="325px">
                 </a>
             </div>
             <div class="col-lg-6 col-6 text-left">
@@ -83,14 +83,13 @@
     <div class="container-fluid mb-5">
         <div class="row border-top px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
-                <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
-                    <h6 class="m-0">Categorías</h6>
-                    <i class="fa fa-angle-down text-dark"></i>
-                </a>
                 <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0" id="navbar-vertical">
                     <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
                         <div class="nav-item dropdown" id="listaCategorias">
-                            <!-- MENÚ DESPLEGABLE CATEGORIAS -->
+                        <h2>Categoría Elegante / Clásica</h2>
+                        <img src="../../img/eleganteCat.jpeg" width="450px">
+                        </div>
+                            
                     </div>
                 </nav>
             </div>
@@ -104,7 +103,7 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="index.html" class="nav-item nav-link active">Home</a>
+                            <a href="../../index.html" class="nav-item nav-link active">Home</a>
                             <a href="#" class="nav-item nav-link">Tienda</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Páginas</a>
@@ -120,7 +119,23 @@
                         </div>
                     </div>
                 </nav>
-                <div id="header-carousel" class="carousel slide" data-ride="carousel">
+                <!-- Products Start -->
+                <div class="container-fluid pt-5">
+                    <div class="text-center mb-4">
+                        <h2 class="section-title px-5"><span class="px-2">Productos</span></h2>
+                    </div>
+                    <div style="
+                    
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: flex-start;
+                    gap: 5rem;" id="contenedorProductos">
+                    
+                    </div>
+                    
+                </div>
+                <!-- Products End -->
+                <!-- <div id="header-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner" id="contenedorCarrusel">
                        
                     </div>
@@ -134,7 +149,7 @@
                             <span class="carousel-control-next-icon mb-n2"></span>
                         </div>
                     </a>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -142,7 +157,7 @@
 
 
     <!-- Featured Start -->
-    <div class="container-fluid pt-5">
+    <!-- <div class="container-fluid pt-5">
         <div class="row px-xl-5 pb-3">
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
@@ -169,29 +184,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Featured End -->
 
-    <!-- Categories Start -->
-    <div class="container-fluid pt-5">
-        <h1 style="display: flex; justify-content: center;">Categorías</h1>
-        <div style="display: flex; justify-content: space-between; flex-wrap: wrap;" id="categoriasLista">
-        
-        </div>
-    </div>
-    <!-- Categories End -->
-
-    <!-- Products Start -->
-    <div class="container-fluid pt-5">
-        <div class="text-center mb-4">
-            <h2 class="section-title px-5"><span class="px-2">Productos</span></h2>
-        </div>
-        <div style="display: flex; justify-content: space-between; flex-wrap: wrap;" id="contenedorProductos">
-        
-        </div>
-        
-    </div>
-    <!-- Products End -->
+    
 
     <!-- Footer Start -->
     <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
@@ -210,7 +206,7 @@
             <div class="col-md-6 px-xl-0">
                 <p class="mb-md-0 text-center text-md-left text-dark">
                     &copy; <a class="text-dark font-weight-semi-bold" href="#">La Petra CO</a>. All Rights Reserved. 
-					
+		
 					Designed by <a class="text-dark font-weight-semi-bold" href="https://htmlcodex.com">HTML Codex</a>
                 </p>
             </div>
@@ -233,8 +229,8 @@
     <script src="mail/contact.js"></script> -->
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-    <script src="./inicio/index.js" type="module"></script>
+    <script src="../../js/main.js"></script>
+    <script src="./elegante.js" type="module"></script>
 </body>
 
 </html>
