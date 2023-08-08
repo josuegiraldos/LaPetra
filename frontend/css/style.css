@@ -4469,6 +4469,12 @@ input[type="button"].btn-block {
   margin-left: -0.625rem;
 }
 
+.custom-card {
+  width: 18rem;
+  height: 100%;
+  margin-bottom: 20px; 
+}
+
 .card-img-overlay {
   position: absolute;
   top: 0;
