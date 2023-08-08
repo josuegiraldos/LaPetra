@@ -100,7 +100,7 @@ async function listarProductos(){
     const productosResponse = await getProductos();
     const productos = productosResponse.productos;
     productos.forEach(producto => {
-      const { _id, nombre, descripcion, precio, imagen } = producto;
+      const { _id, nombre, descripcion, precio, imagen, inventario } = producto;
       const card = document.createElement('div');
       card.innerHTML = 
       `
@@ -109,6 +109,7 @@ async function listarProductos(){
             <div class="card-body card-body d-flex flex-column justify-content-between">
             <h5 class="card-title">${nombre}</h5>
             <p class="card-text">${descripcion}</p>
+            <p class="card-text">Stock: ${inventario}</p>
             <p class="card-text">$${precio}</p>
             <a href="#" class="btn btn-primary">Ver más</a>
             </div>

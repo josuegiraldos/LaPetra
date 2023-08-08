@@ -101,20 +101,26 @@ const getProductosPorCategoria = async (req, res) => {
     try {
         console.log('Paso 1: Iniciando búsqueda de productos por categoría');
         const { categoriaId } = req.params;
+        
         const query = { 
-            categoria: categoriaId,
+            categoria: "64cadc244cea9c702c3c1606",
             estado: true
         };
         
         console.log('Paso 2: Consulta de búsqueda:', query);
         
-        const productos = await Producto.find(query)
-            .populate('categoria', 'nombre');
+        const [ total, productos ] = await Promise.all([
+            Producto.countDocuments(query),
+            Producto.find(query)
+                .populate('categoria', 'nombre')
+        ]);
         
         console.log('Paso 3: Resultado de la búsqueda de productos:', productos);
 
         res.json({
+            total,
             msg: "Productos filtrados por categoría.",
+            Categoria: categoriaId,
             productos
         });
 
@@ -126,6 +132,7 @@ const getProductosPorCategoria = async (req, res) => {
         });
     }
 };
+
 
 module.exports = {
     getProductos,
