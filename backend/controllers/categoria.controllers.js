@@ -1,4 +1,5 @@
 const Categoria = require('../models/Categoria.js');
+const Producto = require('../models/Producto.js');
 
 const getCategorias = async (req, res) => {
     try {
@@ -86,10 +87,47 @@ const putCategoria = async (req, res) => {
     }
 }
 
+const getProductosPorCategoria = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const query = {
+            categoria: id,
+            estado: true
+        }
+
+        const [ total, productos ] = await Promise.all([
+            Producto.countDocuments(query),
+            Producto.find(query)
+        ]);
+
+        const categoria = await Categoria.findById(id);
+        if (!categoria) {
+            return res.status(404).json({ msg: 'Categoría no encontrada.' });
+        }
+
+        console.log("ID de la categoria:", id);
+        console.log("Resultado de la búsqueda:", productos);
+
+        res.json({
+            total,
+            msg: 'Productos filtrados por categoría.',
+            categoria,
+            productos
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            msg: 'Error al obtener productos por categoría.'
+        });
+    }
+};
+
 module.exports = {
     getCategorias,
     postCategoria,
     deleteCategoria,
     getCategoriaById,
-    putCategoria
+    putCategoria,
+    getProductosPorCategoria
 }

@@ -4470,11 +4470,27 @@ input[type="button"].btn-block {
 }
 
 #contenedorProductos{
-  margin: 6rem;
+  margin: 2rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  gap: 7rem;
+  gap: 4rem;
+}
+
+#productosElegantes{
+  margin: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 2rem;
+}
+
+#listarProducts{
+  margin: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 2rem;
 }
 
 .custom-card {

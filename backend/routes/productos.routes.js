@@ -4,15 +4,13 @@ const { validateDocuments } = require('../middlewares/validate.documents.js');
 const { validateJWT } = require('../middlewares/validate.jwt.js');
 const { isAdminRole } = require('../middlewares/validate.role.js');
 const { productoExistsById } = require('../helpers/db.validators.js');
-const { getProductos, getProductoById, postProducto, deleteProducto, putProducto, getProductosPorCategoria } = require('../controllers/productos.controllers.js')
+const { getProductos, getProductoById, postProducto, deleteProducto, putProducto } = require('../controllers/productos.controllers.js')
 
 const router = Router();
 
 router.get("/", getProductos);
 
 router.get("/:id", getProductoById);
-
-router.get("/categoria/:categoriaId", getProductosPorCategoria);
 
 router.post("/", [
     validateJWT,

@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function showProductos(){
     try {
-      let idCategoria = '64cadc244cea9c702c3c1606';
+      let idCategoria = '64cade434cea9c702c3c1609';
       const contenedor = document.querySelector('#listarProducts');
       const productosResponse = await getProductosByCategoria(idCategoria);
       console.log(productosResponse);

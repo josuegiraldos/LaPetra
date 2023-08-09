@@ -19,7 +19,7 @@ async function showCategorias(){
         const item = document.createElement('div');
         item.innerHTML = 
         `
-        <a href="./categorias/${cat}/index.html" target="_blank">${nombre}</a>
+          <a href="./categorias/${cat}/index.html" id="${_id}">${nombre}</a>
         `;
         contenedor.appendChild(item);
     });
@@ -55,7 +55,7 @@ async function showCarrusel() {
           <h6 class="cap-carrusel">${descripcion}</h6>
           <h3 class="cap-carrusel">${nombre}</h3>
           <h4 class="cap-carrusel">Precio: $${precio}</h4>
-          <a href="#" class="btn btn-primary">Comprar</a>
+          <a href="#" class="btn btn-primary" id="${_id}">Comprar</a>
         </div>
       `;
   
@@ -105,13 +105,13 @@ async function listarProductos(){
       card.innerHTML = 
       `
         <div class="card custom-card" style="width: 18rem;">
-          <img src="./img/${imagen}" class="card-img-top" alt="...">
+          <img src="./img/${imagen}" class="card-img-top">
             <div class="card-body card-body d-flex flex-column justify-content-between">
             <h5 class="card-title">${nombre}</h5>
             <p class="card-text">${descripcion}</p>
             <p class="card-text">Stock: ${inventario}</p>
             <p class="card-text">$${precio}</p>
-            <a href="#" class="btn btn-primary">Ver más</a>
+            <a href="#" class="btn btn-primary" id="${_id}">Ver más</a>
             </div>
         </div>
       `;

@@ -1,9 +1,8 @@
-const urlCategorias = "http://localhost:7777/api/categorias";
-const urlProductos = "http://localhost:7777/api/productos";
+const url = "http://localhost:7777/api";
 
 export const getCategorias = async () => {
     try {
-        const data = await fetch(urlCategorias);
+        const data = await fetch(`${url}/categorias`);
         const categorias = await data.json();
         return categorias;
     } catch (error) {
@@ -13,12 +12,12 @@ export const getCategorias = async () => {
 
 export const postCategoria = async (categoria) => {
     try {
-        await fetch(urlCategorias, {
+        await fetch(`${url}/categorias`, {
             method: "POST",
             body: JSON.stringify(categoria),
             headers: {
-                'Content-Type': 'application/json',
-                'x-api-token-jwt': headers
+                'Content-Type': 'application/json'
+                //'x-api-token-jwt': headers
             }
         })
         window.location.href = 'index.html';
@@ -29,7 +28,7 @@ export const postCategoria = async (categoria) => {
 
 export const deleteCategoria = async (id) => {
     try {
-        await fetch(`${urlCategorias}/${id}`, {
+        await fetch(`${url}/categorias/${id}`, {
             method: 'DELETE'
         })
         window.location.href = 'index.html';
@@ -40,7 +39,7 @@ export const deleteCategoria = async (id) => {
 
 export const putCategoria = async (id, categoriaUpdated) => {
     try {
-        await fetch(`${urlCategorias}/${id}`, {
+        await fetch(`${url}/categorias/${id}`, {
             method: 'PUT',
             body: JSON.stringify(categoriaUpdated),
             headers: {
@@ -56,7 +55,7 @@ export const putCategoria = async (id, categoriaUpdated) => {
 // - - - - - - - - - - PRODUCTOS - - - - - - - - 
 export const getProductos = async () => {
     try {
-        const data = await fetch(urlProductos);        
+        const data = await fetch(`${url}/productos`);        
         const productos = await data.json();
         return productos; 
     } catch (error) {
@@ -64,19 +63,19 @@ export const getProductos = async () => {
     }
 }
 
-/* export const getProductosByCategoria = async (idCategoria) => {
+export const getProductosByCategoria = async (id) => {
     try {
-        const data = await fetch(`${urlCategorias}/${idCategoria}`);
+        const data = await fetch(`${url}/categorias/productos/${id}`);
         const productos = await data.json();
         return productos;
     } catch (error) {
-        console.log(error, "Error al obtener los productos.");
+        console.log(error, "Error al obtener productos por categoría.");
     }
-} */
+}
 
 export const postProducto = async (producto) => {
     try {
-        await fetch(urlProductos, {
+        await fetch(`${url}/productos`, {
             method: 'POST',
             body: JSON.stringify(producto),
             headers: {
@@ -91,7 +90,7 @@ export const postProducto = async (producto) => {
 
 export const deleteProducto = async (id) => {
     try {
-        await fetch(`${urlProductos}/${id}`, {
+        await fetch(`${url}/productos/${id}`, {
             method: 'DELETE'
         })
         window.location.href = 'index.html';
@@ -102,7 +101,7 @@ export const deleteProducto = async (id) => {
 
 export const putProducto = async (id, productoUpdated) => {
     try {
-        await fetch(`${urlProductos}/${id}`, {
+        await fetch(`${url}/productos/${id}`, {
             method: 'PUT',
             body: JSON.stringify(productoUpdated),
             headers: {
