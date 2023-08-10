@@ -23,9 +23,15 @@ const getUsers = async (req, res) => {
 
 const postUser = async (req, res) => {
     try {
-        const { nombre, email, password, imagen, rol } = req.body;
+        const { nombre, email, password, imagen } = req.body;
 
-        const usuario = new Usuario({ nombre, email, password, imagen, rol });
+        const usuario = new Usuario({ nombre, email, password });
+
+        if(imagen){
+            usuario.imagen = imagen;
+        } else {
+            usuario.imagen = 'avatar.jpg';
+        }
 
         const salt = bcryptjs.genSaltSync();
         usuario.password = bcryptjs.hashSync(password, salt);

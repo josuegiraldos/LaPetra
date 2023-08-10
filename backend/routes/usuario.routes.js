@@ -11,13 +11,13 @@ const router = Router();
 router.get("/", getUsers);
 router.get("/:id", getUserById);
 router.post("/", [
-    validateJWT,
-    isAdminRole,
-    check('nombre', "El nombre no es válido. USUARIO.ROUTES").not().isEmpty(),
+    // validateJWT,
+    // isAdminRole,
+    check('nombre', "El nombre es obligatorio. USUARIO.ROUTES").not().isEmpty(),
     check('password', 'El password debe ser mínimo de 6 dígitos. USUARIO.ROUTES').isLength({ min: 6 }),
     check('email', "El email no es válido. USUARIO.ROUTES").isEmail(),
     check('email').custom(emailExiste),
-    check('rol').custom(isValidRole),
+    // check('rol').custom(isValidRole),
     validateDocuments
 ], postUser);
 router.delete("/:id", [
