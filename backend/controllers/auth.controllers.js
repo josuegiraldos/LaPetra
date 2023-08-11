@@ -9,7 +9,7 @@ const login = async (req, res = response) => {
         const usuario = await Usuario.findOne({ email });
         if(!usuario){
             return res.status(400).json({
-                msg: "Usuario no es correcto."
+                msg: "Usuario no existe."
             })
         }
 
@@ -40,6 +40,20 @@ const login = async (req, res = response) => {
     }
 }
 
+const logout = async (req, res = response) => {
+    try {
+        res.json({
+            msg: "Cierre de sesión exitoso."
+        })
+    } catch (error) {
+        console.log(error);
+        return res.json({
+            msg: "Error al intentar cerrar sesión. Contacte al servicio técnico."
+        });
+    }
+}
+
 module.exports = {
-    login
+    login,
+    logout
 }
