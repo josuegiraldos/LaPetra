@@ -51,6 +51,7 @@ export async function logout() {
     try {
         localStorage.removeItem('userData');
         localStorage.removeItem('token');
+        localStorage.removeItem('cart');
         window.location.href = "index.html";
     } catch (error) {
         console.log(error);

@@ -113,3 +113,14 @@ export const putProducto = async (id, productoUpdated) => {
         console.log(error, "Error al actualizar el producto.");
     }
 }
+
+export const getProductoById = async (id) => {
+    try {
+        const data = await fetch(`${url}/productos/${id}`);
+        const producto = await data.json();
+        return producto;
+    } catch (error) {
+        console.log(error, "Error al obtener producto por ID.");
+
+    }
+}
