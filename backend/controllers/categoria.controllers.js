@@ -38,7 +38,6 @@ const postCategoria = async (req, res) => {
             descripcion,
             imagen,
             estado
-            // Aquí también puedes agregar otros campos del esquema si los tienes
         };
 
         const categoria = new Categoria(data);
