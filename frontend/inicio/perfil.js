@@ -8,7 +8,7 @@ const registerLink = document.getElementById('linkRegistrar');
 logoutButton.addEventListener('click', () => {
     logout();
     hideUserDetails();
-    showLoginAndRegisterLinks(); // Mostrar los enlaces de Login y Register
+    showLoginAndRegisterLinks(); 
 });
 
 const userData = localStorage.getItem('userData');
@@ -17,11 +17,11 @@ if (userData) {
     const user = JSON.parse(userData);
     showUserDetails(user);
     enableLogoutButton();
-    hideLoginAndRegisterLinks(); // Ocultar los enlaces de Login y Register
+    hideLoginAndRegisterLinks(); 
 } else {
     showNoSessionMessage();
     disableLogoutButton();
-    showLoginAndRegisterLinks(); // Mostrar los enlaces de Login y Register
+    showLoginAndRegisterLinks(); 
 }
 
 function showUserDetails(user) {
